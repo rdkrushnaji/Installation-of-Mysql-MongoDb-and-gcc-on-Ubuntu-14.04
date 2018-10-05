@@ -1,0 +1,56 @@
+*************************mysql**********************************
+hostname
+hostname -f
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install mysql-server
+sudo mysql_secure_installation
+mysql -u root -p
+*****************************mongodb****************************
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv
+7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart
+dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+echo "mongodb-org hold" | sudo dpkg --set-selections
+echo "mongodb-org-server hold" | sudo dpkg --set-selections
+echo "mongodb-org-shell hold" | sudo dpkg --set-selections
+echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
+echo "mongodb-org-tools hold" | sudo dpkg --set-selections
+sudo service mongod start
+sudo service mongod status
+mongostat
+mongostat --rowcount 5 2
+mongo
+By default, running this command will look for a MongoDB server
+listening on port 27017 on the localhost interface.
+If youâ€™d like to connect to a MongoDB server running on a
+different port, then use the â€“port option. For example, if you
+wanted to connect to a local MongoDB server listening on port
+22222, then youâ€™d issue the following command:
+mongo --port 22222
+Shutdown MongoDB
+sudo service mongod stop
+Restart MongoDB
+sudo service mongod restart
+**********************gcc***************************************
+sudo apt-get update && \
+sudo apt-get install build-essential software-properties-common -
+y && \
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+sudo apt-get update && \
+sudo apt-get install gcc-snapshot -y && \
+sudo apt-get update && \
+sudo apt-get install gcc-6 g++-6 -y && \
+sudo update-alternatives --install /usr/bin/gcc gcc
+/usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 && \
+sudo apt-get install gcc-4.8 g++-4.8 -y && \
+sudo update-alternatives --install /usr/bin/gcc gcc
+/usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8;
+When completed, you must change to the gcc you want to work with
+by default. Type in your terminal:
+sudo update-alternatives --config gcc
+To verify if it worked. Just type in your terminal
+gcc -v
+***************************************************************
